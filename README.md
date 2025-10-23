@@ -28,7 +28,8 @@ Visualization	Matplotlib, Bokeh
 Notebook	Jupyter
 Deployment	AWS Elastic Beanstalk or EC2
 CI/Runtime Tools	Gunicorn, python-dotenv
-🧪 Features
+
+ ## Features
 ✅ Web form with checkboxes and textboxes for expense categories
 
 ✅ MongoDB integration for persistent storage
@@ -98,7 +99,7 @@ gender_shopping.png
 
 gender_healthcare.png
 
-☁️ AWS Deployment Options
+## AWS Deployment Options
 Option A: Elastic Beanstalk (Recommended)
 Includes Procfile and EB config for easy deployment.
 
