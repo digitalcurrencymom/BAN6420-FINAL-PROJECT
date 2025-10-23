@@ -1,0 +1,10 @@
+branch-defaults:
+  default:
+    environment: survey-final-env
+global:
+  application_name: survey-final-app
+  default_ec2_keyname: null
+  default_platform: Python 3.10
+  default_region: us-east-1
+  profile: null
+  sc: git

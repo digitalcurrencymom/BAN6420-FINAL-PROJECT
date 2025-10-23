@@ -1,0 +1,9 @@
+flask
+pymongo
+pandas
+matplotlib
+jupyter
+python-dotenv
+bokeh
+openpyxl
+gunicorn

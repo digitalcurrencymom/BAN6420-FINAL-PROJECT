@@ -1,0 +1,50 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": { "id": "md1", "language": "markdown" },
+      "source": [
+        "# Survey Data Analysis\n",
+        "Load the CSV produced by the Flask app, analyze incomes and expenses, and produce charts for PowerPoint."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": { "id": "code1", "language": "python" },
+      "source": [
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "from pathlib import Path\n",
+        "csv_path = 'survey_users.csv'\n",
+        "df = pd.read_csv(csv_path)\n",
+        "df.head()\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": { "id": "code2", "language": "python" },
+      "source": [
+        "# Ages with highest income\n",
+        "top_ages = df.groupby('age')['total_income'].mean().sort_values(ascending=False).head(10)\n",
+        "ax = top_ages.plot(kind='bar', title='Ages with Highest Average Income')\n",
+        "fig = ax.get_figure()\n",
+        "fig.savefig('ages_highest_income.png', bbox_inches='tight')\n",
+        "fig.clf()\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": { "id": "code3", "language": "python" },
+      "source": [
+        "# Gender distribution across spending categories\n",
+        "cats = ['utilities','entertainment','school_fees','shopping','healthcare']\n",
+        "for c in cats:\n",
+        "    pivot = df.pivot_table(index='gender', values=c, aggfunc='sum')\n",
+        "    ax = pivot.plot(kind='bar', title=f'Gender distribution for {c}')\n",
+        "    fig = ax.get_figure()\n",
+        "    fig.savefig(f'gender_{c}.png', bbox_inches='tight')\n",
+        "    fig.clf()\n"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey - Income & Expenses</title>
+  </head>
+  <body>
+    <h1>Income & Expenses Survey</h1>
+    <form method="post" action="/submit">
+      <label>Age: <input type="number" name="age" required></label><br>
+      <label>Gender:
+        <select name="gender" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+      </label><br>
+      <label>Total Income: <input type="number" step="0.01" name="total_income" required></label><br>
+
+      <h3>Expenses</h3>
+      {% for cat in categories %}
+      <div>
+        <label><input type="checkbox" name="{{cat}}_enabled"> {{cat.replace('_',' ').title()}}</label>
+        <label>Amount: <input type="number" step="0.01" name="{{cat}}_amount"></label>
+      </div>
+      {% endfor %}
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
